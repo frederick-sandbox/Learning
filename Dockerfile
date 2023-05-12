@@ -1,4 +1,3 @@
-ARG NGINX_TAG=stable-alpine
 FROM nginx:${NGINX_TAG}
 
 RUN apk -U upgrade \
