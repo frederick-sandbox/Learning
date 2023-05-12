@@ -1,4 +1,5 @@
-FROM nginx:1.24.0-alpine
+ARG NGINX_TAG=stable-alpine
+FROM nginx:${NGINX_TAG}
 
 RUN apk -U upgrade \
     && apk add -U inotify-tools
