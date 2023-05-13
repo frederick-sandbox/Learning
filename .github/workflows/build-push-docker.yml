@@ -1,5 +1,6 @@
 name: Build and Push to Docker
 on:
+  # workflow_call:
   workflow_dispatch:
     inputs:
       major:
