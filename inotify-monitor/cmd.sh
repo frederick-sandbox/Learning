@@ -1,8 +1,10 @@
 #!/bin/sh
 
-DIR="$( cd "$( dirname "$0" )" && pwd )"
+# starts the cron daemon for daily apk upgrade
+/usr/sbin/crond
 
 # run the monitor in the background
+DIR="$( cd "$( dirname "$0" )" && pwd )"
 $DIR/nginx-reloader.sh &
 
 # start the nginx in foreground

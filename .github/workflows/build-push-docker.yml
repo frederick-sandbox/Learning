@@ -1,0 +1,66 @@
+name: Build and Push to Docker
+on: workflow_dispatch
+  inputs:
+    major:
+      description: Major Version
+      required: true
+      type: number
+      default: 0
+    minor:
+      description: Minor Version
+      required: true
+      type: number
+      default: 1
+    patch:
+      description: Patch Version
+      required: true
+      type: number
+      default: 0
+    nginx_version:
+      description: NGINX Version
+      required: true
+      type: string
+      default: 1.23.4-alpine
+    repo_name:
+      description: Repository Name
+      required: true
+      type: string
+      default: frederickwong
+    image_name:
+      description: Image Name
+      required: true
+      type: string
+      default: learning
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      TARGET: ${{ inputs.repo_name }}/${{ inputs.image_name }}
+      PLATFORMS: linux/arm64,linux/amd64,linux/arm/v7
+      BUILD_ARGS: NGINX_TAG=${{ inputs.nginx_version }}
+      TAGS: |
+        $TARGET:latest
+        $TARGET:${{ inputs.major }}
+        $TARGET:${{ inputs.major }}-${{ inputs.minor }}
+        $TARGET:${{ inputs.major }}.${{ inputs.minor }}.${ inputs.patch }
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and Push to Docker
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          build-args: $BUILD_ARGS
+          platforms: $PLATFORMS
+          tags: $TAGS

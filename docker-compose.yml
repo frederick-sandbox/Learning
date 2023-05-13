@@ -4,11 +4,12 @@ services:
     image: frederickwong/learning:latest
     restart: unless-stopped
     environment:
-      - NGINX_RELOAD_DELAY_IN_SECONDS=10s
-      - NGINX_PATH_TO_MONITOR="/test"
+      - NGINX_RELOAD_DELAY=15s
+      - NGINX_PATH_TO_MONITOR=/etc/nginx/conf.d /etc/letsencrypt/archive
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./:/test
+      - ./data/conf:/etc/nginx/conf.d
+      - ./data/certs:/etc/letsencrypt/archive
     ports:
       - 80:80
       - 433:433
