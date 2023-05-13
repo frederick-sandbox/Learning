@@ -1,36 +1,37 @@
 name: Build and Push to Docker
-on: workflow_dispatch
-  inputs:
-    major:
-      description: Major Version
-      required: true
-      type: number
-      default: 0
-    minor:
-      description: Minor Version
-      required: true
-      type: number
-      default: 1
-    patch:
-      description: Patch Version
-      required: true
-      type: number
-      default: 0
-    nginx_version:
-      description: NGINX Version
-      required: true
-      type: string
-      default: 1.23.4-alpine
-    repo_name:
-      description: Repository Name
-      required: true
-      type: string
-      default: frederickwong
-    image_name:
-      description: Image Name
-      required: true
-      type: string
-      default: learning
+on: 
+  workflow_dispatch
+    inputs:
+      major:
+        description: Major Version
+        required: true
+        type: number
+        default: 0
+      minor:
+        description: Minor Version
+        required: true
+        type: number
+        default: 1
+      patch:
+        description: Patch Version
+        required: true
+        type: number
+        default: 0
+      nginx_version:
+        description: NGINX Version
+        required: true
+        type: string
+        default: 1.23.4-alpine
+      repo_name:
+        description: Repository Name
+        required: true
+        type: string
+        default: frederickwong
+      image_name:
+        description: Image Name
+        required: true
+        type: string
+        default: learning
 jobs:
   build:
     name: Build
