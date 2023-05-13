@@ -1,7 +1,8 @@
 name: Git Version Test
 on: workflow_dispatch
 jobs:
-  git-version:
+  gitversion:
+    name: Git Version Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
