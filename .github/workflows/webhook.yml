@@ -20,7 +20,7 @@ jobs:
     steps:
       - env:
           UNIT: ${{ github.event.client_payload.unit }}
-        run: echo Unit\: $UNIT
+        run: echo $UNIT
       - env:
           INTEGRATION: ${{ github.event.client_payload.integration }}
         run: echo Integration\: $INTEGRATION
