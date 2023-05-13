@@ -9,15 +9,17 @@ on:
 jobs:
   webhook-hotfix:
     name: Webhook Hotfix
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Output ref
-        env:
-          GIT_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GIT_CONTEXT"
-      # - name: Checkout Hotfix Branch
-      #   uses: peterjgrainger/action-create-branch@v2.3.0
+      # - name: Output ref
       #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     branch: "Hotfix/${{ inputs.major_minor }}"
+      #     GIT_CONTEXT: ${{ toJSON(github) }}
+      #   run: echo "$GIT_CONTEXT"
+      - name: Checkout Hotfix Branch
+        uses: peterjgrainger/action-create-branch@v2.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        with:
+          branch: "Hotfix/${{ inputs.major_minor }}"
+          sha: ${{ github.sha }}
