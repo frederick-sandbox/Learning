@@ -23,4 +23,4 @@ jobs:
         run: echo $UNIT
       - env:
           INTEGRATION: ${{ github.event.client_payload.integration }}
-        run: echo Integration\: $INTEGRATION
+        run: echo 'Integration:' $INTEGRATION
