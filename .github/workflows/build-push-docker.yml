@@ -1,6 +1,6 @@
 name: Build and Push to Docker
-on: 
-  workflow_dispatch
+on:
+  workflow_dispatch:
     inputs:
       major:
         description: Major Version
