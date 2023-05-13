@@ -16,7 +16,7 @@ jobs:
           preferLatestVersion: true
       - name: Determine Version
         id: gitversion
-        uses: gittools/actions/gitversion/excute@v0
+        uses: gittools/actions/gitversion/execute@v0
       - name: Output GitVersion
         run: |
           echo "Major: ${{ steps.gitversion.outputs.major }}"
