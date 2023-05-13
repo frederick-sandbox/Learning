@@ -1,0 +1,21 @@
+on:
+  workflow_dispatch:
+    inputs:
+      major_minor:
+        description: Major.Minor Version
+        default: 0.1
+        type: string
+        required: true
+jobs:
+  webhook-hotfix:
+    name: Webhook Hotfix
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output ref
+        run: echo ${{ github.ref }}
+      # - name: Checkout Hotfix Branch
+      #   uses: peterjgrainger/action-create-branch@v2.3.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     branch: "Hotfix/${{ inputs.major_minor }}"
