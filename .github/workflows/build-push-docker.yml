@@ -62,5 +62,5 @@ jobs:
           tags: |
             ${{ env.TARGET }}:latest
             ${{ env.TARGET }}:${{ inputs.major }}
-            ${{ env.TARGET }}:${{ inputs.major }}-${{ inputs.minor }}
+            ${{ env.TARGET }}:${{ inputs.major }}.${{ inputs.minor }}
             ${{ env.TARGET }}:${{ inputs.major }}.${{ inputs.minor }}.${{ inputs.patch }}
