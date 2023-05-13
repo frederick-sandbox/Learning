@@ -60,7 +60,7 @@ jobs:
           build-args: NGINX_TAG=${{ inputs.nginx_version }}
           platforms: linux/arm64,linux/amd64,linux/arm/v7
           tags: |
-            ${{ env.TARGET }}:latest
-            ${{ env.TARGET }}:${{ inputs.major }}
-            ${{ env.TARGET }}:${{ inputs.major }}.${{ inputs.minor }}
             ${{ env.TARGET }}:${{ inputs.major }}.${{ inputs.minor }}.${{ inputs.patch }}
+            ${{ env.TARGET }}:${{ inputs.major }}.${{ inputs.minor }}
+            ${{ env.TARGET }}:${{ inputs.major }}
+            ${{ env.TARGET }}:latest
